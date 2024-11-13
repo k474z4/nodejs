@@ -69,5 +69,14 @@ const getPokemonById = require('./js-foundation/06-promises.js');
 
 getPokemonById(4)
     .then((pokemon) => console.log({ pokemon }))
-    .catch((err) => console.log('Por favor intente denuevo'))
+    .catch((err) => console.error('Por favor intente denuevo'))
     .finally(() => console.log('Finalmente'));
+
+//----------------------------------------------------------------------------------------
+
+const { buildLogger } = require('./plugins');
+
+const logger = buildLogger('app.js');
+
+logger.log('Hola mundo');
+logger.error('Un error muy malo');
