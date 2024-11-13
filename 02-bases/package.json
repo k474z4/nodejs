@@ -11,6 +11,7 @@
   "author": "k474z4",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.7.7",
     "get-age": "^1.0.1",
     "uuid": "^11.0.3"
   }
