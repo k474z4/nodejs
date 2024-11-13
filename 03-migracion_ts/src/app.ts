@@ -1,5 +1,6 @@
 // npm start
-console.log('El comando start es el que levanta la aplicacion en produccion');
+// console.log('El comando start es el que levanta la aplicacion en produccion');
+
 
 //----------------------------------------------------------------------------------------
 
@@ -8,7 +9,7 @@ console.log('El comando start es el que levanta la aplicacion en produccion');
 
 
 // Si usamos la desestructuracion ya no es necesario utilizar la sintaxis de puntos para referir a una parte especifica del objeto
-const { emailTemplate } = require('./js-foundation/01-template');
+// const { emailTemplate } = require('./js-foundation/01-template.js');
 
 
 // Podemos especificar que parte del codigo queremos ejecutar 
@@ -19,11 +20,11 @@ const { emailTemplate } = require('./js-foundation/01-template');
 
 //----------------------------------------------------------------------------------------
 
-require('./js-foundation/02-destructuring');
+// require('./js-foundation/02-destructuring.js');
 
 //----------------------------------------------------------------------------------------
 
-// const { getUserById } = require('./js-foundation/03-callbacks');
+// import { getUserById } from "./js-foundation/03-callbacks";
 
 // const id = 2;
 
@@ -37,7 +38,7 @@ require('./js-foundation/02-destructuring');
 
 //----------------------------------------------------------------------------------------
 
-const { getUserById } = require('./js-foundation/04-arrow.js');
+import { getUserById } from "./js-foundation/04-arrow.js";
 
 const id = 2;
 
@@ -46,13 +47,13 @@ getUserById(id, (error, user) => {
         throw new Error(error)
     }
 
-    // console.log({ user });
+    console.log({ user });
 });
 
 //----------------------------------------------------------------------------------------
 
-const { getAge, getUUID } = require('./plugins')
-const { buildMakePerson } = require('./js-foundation/05-factory.js');
+import { buildMakePerson } from "./js-foundation/05-factory";
+import { getAge, getUUID } from "./plugins";
 
 // Inyeccion de dependencias
 const makePerson = buildMakePerson({ getUUID, getAge });
@@ -61,13 +62,25 @@ const obj = { name: 'John', birthdate: '1996-07-18' };
 
 const john = makePerson(obj);
 
-// console.log({ john });
+console.log({ john });
 
 //----------------------------------------------------------------------------------------
 
-const getPokemonById = require('./js-foundation/06-promises.js');
+import { getPokemonById } from "./js-foundation/06-promises";
+
 
 getPokemonById(4)
     .then((pokemon) => console.log({ pokemon }))
-    .catch((err) => console.log('Por favor intente denuevo'))
+    .catch((err) => console.error('Por favor intente denuevo'))
     .finally(() => console.log('Finalmente'));
+
+//----------------------------------------------------------------------------------------
+
+import { buildLogger } from "./plugins/logger.plugin";
+
+const logger = buildLogger('app.js');
+
+logger.log('Hola mundo');
+logger.error('Un error muy malo');
+
+console.log('Hola Mundo')

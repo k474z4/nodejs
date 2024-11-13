@@ -5,9 +5,19 @@
 
 // const obj = { name: 'John', birthdate: '1996-07-18' };
 
-const buildMakePerson = ({getUUID, getAge}) => {
+interface Options {
+    getUUID: () => string;
+    getAge: (birthdate: string) => number;
+}
 
-    return ({ name, birthdate }) => {
+interface Properties {
+    name: string;
+    birthdate: string;
+}
+
+export const buildMakePerson = ({ getUUID, getAge }: Options) => {
+
+    return ({ name, birthdate }: Properties) => {
 
         return {
             id: getUUID(),
@@ -22,7 +32,3 @@ const buildMakePerson = ({getUUID, getAge}) => {
 // const john = buildPerson(obj);
 
 // console.log(john)
-
-module.exports = {
-    buildMakePerson,
-}

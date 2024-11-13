@@ -74,13 +74,10 @@
 // Axios exercise (solucion de la clase)
 const { httpAxios } = require('../plugins/http-client.plugin');
 
-const getPokemonById = async (id) => {
+export const getPokemonById = async (id: string | number): Promise<string> => {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
 
     const pokemon = await httpAxios.get(url);
     return pokemon.name;
 
 }
-
-
-module.exports = getPokemonById;
