@@ -3,6 +3,7 @@
 //     const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
 
 
+
 //     fetch(url).then((response) => {
 //         response.json().then((pokemon) => {
 //             // console.log(pokemon.name);
@@ -72,12 +73,16 @@
 // }
 
 // Axios exercise (solucion de la clase)
-const { httpAxios } = require('../plugins/http-client.plugin');
+import { httpAxios } from "../plugins/http-client.plugin";
 
 export const getPokemonById = async (id: string | number): Promise<string> => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
 
-    const pokemon = await httpAxios.get(url);
-    return pokemon.name;
+    try {
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+        const pokemon = await httpAxios.get(url);
+        return pokemon.name;
+    } catch (error) {
+        throw `Pokemon not found with id ${id}`
+    }
 
 }
