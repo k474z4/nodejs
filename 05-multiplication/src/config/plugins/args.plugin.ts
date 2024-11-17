@@ -1,4 +1,4 @@
-import yargs from "yargs";
+import yargs, { options } from "yargs";
 import { hideBin } from 'yargs/helpers';
 
 // Sintaxis de objetos
