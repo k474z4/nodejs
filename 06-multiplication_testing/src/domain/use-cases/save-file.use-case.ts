@@ -17,17 +17,17 @@ export class SaveFile implements SaveFileUseCase {
     /** repository: StorageRepository */
   ) { }
 
-  execute({ 
-    fileContent, 
-    fileDestination = 'outputs', 
+  execute({
+    fileContent,
+    fileDestination = 'outputs',
     fileName = 'table'
-}: Options): boolean {
+  }: Options): boolean {
 
     try {
       fs.mkdirSync(fileDestination, { recursive: true });
-      fs.writeFileSync(`${fileDestination}/${ fileName }.txt`, fileContent );
+      fs.writeFileSync(`${fileDestination}/${fileName}.txt`, fileContent);
       return true;
-      
+
     } catch (error) {
       console.error(error);
       return false;
