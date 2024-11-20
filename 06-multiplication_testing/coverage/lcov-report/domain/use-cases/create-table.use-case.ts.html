@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for save-file.use-case.ts</title>
+    <title>Code coverage report for domain/use-cases/create-table.use-case.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="prettify.css" />
-    <link rel="stylesheet" href="base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> save-file.use-case.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">domain/use-cases</a> create-table.use-case.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.45% </span>
+                <span class="strong">72.41% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/37</span>
+                <span class='fraction'>21/29</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.45% </span>
+                <span class="strong">72.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/37</span>
+                <span class='fraction'>21/29</span>
             </div>
         
             
@@ -91,17 +91,7 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -128,69 +118,52 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import fs from 'fs';
-&nbsp;
-export interface SaveFileUseCase {
-  execute: (options: Options) =&gt; boolean;
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">export interface CreateTableUseCase {
+  execute: (options: CreateTableOptions) =&gt; string;
 }
 &nbsp;
-export interface Options {
-  fileContent: string;
-  fileDestination?: string;
-  fileName?: string;
+export interface CreateTableOptions {
+  base: number;
+  limit?: number;
 }
 &nbsp;
 &nbsp;
-export class SaveFile implements SaveFileUseCase {
+export class CreateTable implements CreateTableUseCase {
 &nbsp;
   constructor(
-    /** repository: StorageRepository */
+    /**
+     * DI - Dependency Injection
+     */
   ) { }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  execute({</span>
-<span class="cstat-no" title="statement not covered" >    fileContent,</span>
-<span class="cstat-no" title="statement not covered" >    fileDestination = 'outputs',</span>
-<span class="cstat-no" title="statement not covered" >    fileName = 'table'</span>
-<span class="cstat-no" title="statement not covered" >  }: Options): boolean {</span>
+<span class="fstat-no" title="function not covered" >  execute({ base, limit = 10 }: CreateTableOptions) {</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    try {</span>
-<span class="cstat-no" title="statement not covered" >      fs.mkdirSync(fileDestination, { recursive: true });</span>
-<span class="cstat-no" title="statement not covered" >      fs.writeFileSync(`${fileDestination}/${fileName}.txt`, fileContent);</span>
-<span class="cstat-no" title="statement not covered" >      return true;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    } catch (error) {</span>
-<span class="cstat-no" title="statement not covered" >      // console.error(error);</span>
-<span class="cstat-no" title="statement not covered" >      return false;</span>
+<span class="cstat-no" title="statement not covered" >    let outputMessage = '';</span>
+<span class="cstat-no" title="statement not covered" >    for (let i = 1; i &lt;= limit; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      outputMessage += `${base} x ${i} = ${base * i}\n`;</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    return outputMessage;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-}
-&nbsp;</pre></td></tr></table></pre>
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-20T23:04:10.993Z
+                at 2024-11-20T23:08:16.877Z
             </div>
-        <script src="prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="sorter.js"></script>
-        <script src="block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
