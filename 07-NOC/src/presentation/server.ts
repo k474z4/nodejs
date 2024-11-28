@@ -18,18 +18,20 @@ export class Server {
 
         console.log('Server started...');
 
-        CronService.createJob(
-            '*/5 * * * * *',
-            () => {
-                const url = 'http://localhost:3000';
-                new CheckService(
-                    fileSystemLogRepository,
-                    () => console.log(`${url} is ok`),
-                    (error) => console.log(error),
-                ).execute(url);
-                // new CheckService().execute('http://localhost:3000/');
-            }
-        );
+        // Enviar email
+
+        // CronService.createJob(
+        //     '*/5 * * * * *',
+        //     () => {
+        //         const url = 'http://localhost:3000';
+        //         new CheckService(
+        //             fileSystemLogRepository,
+        //             () => console.log(`${url} is ok`),
+        //             (error) => console.log(error),
+        //         ).execute(url);
+        //         // new CheckService().execute('http://localhost:3000/');
+        //     }
+        // );
 
     }
 }
