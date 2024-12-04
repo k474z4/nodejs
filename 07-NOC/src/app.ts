@@ -1,3 +1,4 @@
+import { PrismaClient } from "@prisma/client";
 import { envs } from "./config/plugins/envs.plugins";
 import { LogModel, MongoDatabase } from "./data/mongo";
 import { Server } from "./presentation/server";
@@ -15,6 +16,25 @@ async function main() {
         mongoUrl: envs.MONGO_URL,
         dbName: envs.MONGO_DB_NAME,
     });
+
+    const prisma = new PrismaClient();
+
+    // crear log con prisma
+    // const newLog = await prisma.logModel.create({
+    //     data: {
+    //         level: 'HIGH',
+    //         message: 'Test message',
+    //         origin: 'App.ts'
+    //     }
+    // });
+
+    // listar todos con un nivel HIGH
+    // const logs = await prisma.logModel.findMany({
+    //     where: {
+    //         level: 'HIGH'
+    //     }
+    // });
+    // console.log(logs);
 
     // crear coleccion = tables - documento = registro/row
     // const newLog = await LogModel.create({
