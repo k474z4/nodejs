@@ -44,24 +44,25 @@ export class Server {
         // );
 
         // configurar espacios de tiempo
-        CronService.createJob(
-            '*/5 * * * * *',
-            () => {
-                const url = 'http://localhost:3000';
-                // new CheckService(
-                //     logRepository,
-                //     () => console.log(`${url} is ok`),
-                //     (error) => console.log(error),
-                // ).execute(url);
-                // new CheckService().execute('http://localhost:3000/');
+        // CronService.createJob(
+        //     '*/5 * * * * *',
+        //     () => {
+        //         const url = 'https://google.com';
+        //         // new CheckService(
+        //         //     logRepository,
+        //         //     () => console.log(`${url} is ok`),
+        //         //     (error) => console.log(error),
+        //         // ).execute(url);
+        //         // new CheckService().execute('http://localhost:3000/');
 
-                new CheckServiceMultiple(
-                    [fsLogRepository, mongoLogRepository, postgresLogRepository],
-                    () => console.log(`${url} is ok`),
-                    (error) => console.log(error),
-                ).execute(url);
-            }
-        );
+        //         // multiples repositorios
+        //         new CheckServiceMultiple(
+        //             [fsLogRepository, mongoLogRepository, postgresLogRepository],
+        //             () => console.log(`${url} is ok`),
+        //             (error) => console.log(error),
+        //         ).execute(url);
+        //     }
+        // );
 
     }
 }
