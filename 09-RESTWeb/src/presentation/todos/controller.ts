@@ -71,7 +71,7 @@ export class TodosController {
 
 
         res.json(todo);
-    }
+    };
 
     public deleteTodo = (req: Request, res: Response) => {
         const id = +req.params.id
@@ -85,7 +85,7 @@ export class TodosController {
         todos.splice(todos.indexOf(todo), 1);
         res.json(todo);
 
-    }
+    };
 
 
 }
