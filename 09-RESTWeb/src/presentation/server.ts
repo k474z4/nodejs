@@ -25,18 +25,18 @@ export class Server {
 
 
 
-        // Middlewares
+        //* Middlewares
         this.app.use(express.json()); // raw
         this.app.use(express.urlencoded({ extended: true })); // x-www-form-urlencoded
 
-        // Public Folder
+        //* Public Folder
         this.app.use(express.static(this.publicPath));
 
-        // Routes
+        //* Routes
         this.app.use(this.routes);
 
 
-        // SPA cualquier ruta que no haya sido definida pasa por el comodin
+        //* SPA cualquier ruta que no haya sido definida pasa por el comodin
         this.app.get('*', (req, res) => {
             const indexPath = path.join(__dirname + `../../../${this.publicPath}/index.html`);
             res.sendFile(indexPath);
